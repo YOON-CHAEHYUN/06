@@ -3,15 +3,29 @@
 
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
-int square(int a)
-{
-	
-	return (a*a);
+int facto(int n){
+	int i, fac=1;
+	for(i=1;i<n+1;i++)
+		fac=fac*i;
+	return fac;
 }
 
-int main()
-{
-	int a=2;
-	a=square(a);
-	printf("a=%i\n",a);
+int combi(int n, int r){
+	int n_fac, n_r_fac, r_fac;
+	n_fac = facto(n);
+	n_r_fac = facto(n-r);
+	r_fac = facto(r);
+	printf("%d,%d,%d",n_fac,n_r_fac,r_fac);
+	return (n_fac/(n_r_fac*r_fac));
+}
+
+int main(void){
+	
+	int n, r, comb;
+	printf("input n, r: ");
+	scanf("%d,%d",&n,&r);
+	comb=combi(n, r);
+	
+	printf("combi=%d",comb);
+	return 0;
 }
